@@ -75,12 +75,12 @@
 
     {
       "source": "${env:HOME}/.local/share/nvim/lazy",
-      "target": "/home/kitcar/.local/share/nvim/lazy",
+      "target": "/home/max/.local/share/nvim/lazy",
       "type": "bind"
     },
     {
       "source": "${env:HOME}/.ssh",
-      "target": "/home/kitcar/.ssh",
+      "target": "/home/max/.ssh",
       "type": "bind"
     }
   ],
@@ -89,7 +89,7 @@
     "create-cache-mounts": "mkdir -p ${localWorkspaceFolder}/cache/humble/log ${localWorkspaceFolder}/cache/humble/build ${localWorkspaceFolder}/cache/humble/install"
   },
   "onCreateCommand": {
-    "create-config-mounts": "mkdir -p /home/kitcar/.local/share/nvim && sudo chown -R kitcar /home/kitcar/.local"
+    "create-config-mounts": "mkdir -p /home/max/.local/share/nvim && sudo chown -R max /home/max/.local"
   },
   "postCreateCommand": {
     "chown-ws": "sudo chown -R max /home/ws/",
