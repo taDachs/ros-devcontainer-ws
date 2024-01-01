@@ -8,6 +8,17 @@
       "USERNAME": "max"
     }
   },
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:1": {
+      "version": "latest",
+      "configureZshAsDefaultShell": true
+    },
+    "ghcr.io/tadachs/devcontainer-features/neovim:latest": {},
+    "ghcr.io/tadachs/devcontainer-features/cli-dev-utils:latest": {},
+    "ghcr.io/tadachs/devcontainer-features/my-dotfiles:latest": {
+      "username": "max"
+    }
+  },
   "workspaceFolder": "/home/ws",
   "workspaceMount": "source=${localWorkspaceFolder}/src,target=/home/ws/src,type=bind",
   "customizations": {
@@ -61,11 +72,25 @@
       "target": "/home/ws/log",
       "type": "bind"
     },
+
+    {
+      "source": "${env:HOME}/.local/share/nvim/lazy",
+      "target": "/home/kitcar/.local/share/nvim/lazy",
+      "type": "bind"
+    },
+    {
+      "source": "${env:HOME}/.ssh",
+      "target": "/home/kitcar/.ssh",
+      "type": "bind"
+    }
   ],
   "initializeCommand": {
+    "create-config-mounts": "mkdir -p $HOME/.local/share/nvim/lazy",
     "create-cache-mounts": "mkdir -p ${localWorkspaceFolder}/cache/humble/log ${localWorkspaceFolder}/cache/humble/build ${localWorkspaceFolder}/cache/humble/install"
   },
-  "onCreateCommand": {},
+  "onCreateCommand": {
+    "create-config-mounts": "mkdir -p /home/kitcar/.local/share/nvim && sudo chown -R kitcar /home/kitcar/.local"
+  },
   "postCreateCommand": {
     "chown-ws": "sudo chown -R max /home/ws/",
     "apt-update": "sudo apt update",
